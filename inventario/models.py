@@ -16,14 +16,14 @@ class Categoria(models.Model):
         return self.nombre
 
 class Valor(models.Model):
-    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name='valores')
     valor = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
         return f"{self.producto.nombre} - {self.valor}"
 
 class Cantidad(models.Model):
-    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name='cantidades')
     cantidad = models.IntegerField()
 
     def __str__(self):

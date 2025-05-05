@@ -9,7 +9,6 @@ class Categoria(models.Model):
 class Producto(models.Model):
     nombre = models.CharField(max_length=100)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, related_name='productos')
-    descripcion = models.TextField(blank=True)
     precio = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
@@ -31,7 +30,7 @@ class Movimiento(models.Model):
     tipo = models.CharField(max_length=10, choices=TIPO_CHOICES)
     cantidad = models.IntegerField()
     fecha = models.DateTimeField(auto_now_add=True)
-    observaciones = models.TextField(blank=True)
+
 
     def __str__(self):
         return f"{self.tipo} - {self.producto.nombre} - {self.cantidad} unidades"
